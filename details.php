@@ -1,0 +1,69 @@
+<?php
+    require_once 'components/db_connect.php';
+
+    $sql = "SELECT * FROM `library` WHERE id = $_GET[id]";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    $card = "
+    <div class='p-2'>
+    <div class='card'>
+        <img src='assets/$row[picture]' class='card-img-top mt-3' alt='...'>
+    <div class='card-body'>
+            <h5 class='card-title'>$row[title]</h5>
+            <hr>
+            <p class='card-text'>Status: $row[status]</p>
+            <p class='card-text'>ISBN: $row[ISBN]</p>
+            <p class='card-text'>Category: $row[type]</p>
+            <p class='card-text'>Author: $row[author_first_name] $row[author_last_name]</p>
+            <p class='card-text'>Publisher name: <a href='publisher.php?id=$row[id]'> $row[publisher_name] </a></p>
+            <p class='card-text'>Publisher adress: $row[publisher_address]</p>
+            <p class='card-text'>Publisher date: $row[publish_date]</p>
+
+            <p class='card-text'>Short description: $row[short_description]</p>
+            <a href='update.php?id=$row[id]' class='btn btn-warning'>Update</a>
+            <a href='delete.php?id=$row[id]' class='btn btn-danger'>Delete</a>
+        </div>
+    </div>
+</div>
+    ";
+
+    mysqli_close($conn);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+    body {
+        font-family: "Josefin Sans", sans-serif;
+        background-image: url("assets/bgd.jpg");
+    }
+ .card-img-top {
+width: 25%;
+display: block;
+margin-left: auto;
+margin-right: auto;
+object-fit: cover;
+}
+</style>
+
+</head>
+
+<body>
+    <?php require_once 'components/navbar.php'; ?>
+    <div class="container">
+            <?= $card; ?>
+    </div>
+    <?php require_once 'components/footer.php'; ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>
