@@ -11,12 +11,12 @@
                 <div class='p-2'>
                     <div class='card'>
                         <img src='assets/$row[picture]' class='card-img-top' alt='...'>
-                        <div class='card-body'>
+                        <div class='card-body d-flex flex-column'>
                             <h5 class='card-title'>$row[title]</h5>
                             <hr>
                             <p class='card-text'><b>Author</b>: $row[author_first_name] $row[author_last_name]</p>
                             <p class='card-text'><b>Short description</b>: <br> $row[short_description]</p>
-                            <a href='details.php?id=$row[id]' class='btn btn-primary'>Details</a>
+                            <a href='details.php?id=$row[id]' class='btn btn-primary mt-auto'>Details</a>
                         </div>
                     </div>
                 </div>
@@ -47,6 +47,9 @@ body {
     background-repeat: no-repeat;
     font-family: "Josefin Sans", sans-serif;
 }
+ .card{
+     height: 100%;
+ }
 </style>
 
 </head>

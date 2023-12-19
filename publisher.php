@@ -77,7 +77,11 @@ mysqli_close($conn);
   padding-right: 30px;
   padding-bottom: 40px;
   padding-left: 80px;
+            border:  6px solid;
+            border-color: #773E02FF;
+            border-radius: 30px;
     }
+
     </style>
 </head>
 <body>
